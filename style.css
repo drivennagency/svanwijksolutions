@@ -59,6 +59,8 @@ h2 { font-size:clamp(1.5rem,3vw,2.2rem); font-weight:700; line-height:1.25; colo
 h3 { font-size:1.15rem; font-weight:700; color:var(--clr-primary); }
 p  { color:var(--clr-muted); line-height:1.75; }
 .container { max-width:var(--max-w); margin-inline:auto; padding-inline:24px; }
+.container--wide { max-width: 1800px; padding-inline: 40px; }
+@media (max-width: 640px) { .container--wide { padding-inline: 20px; } }
 .section   { padding-block:100px; }
 .section--alt { background:var(--clr-white); }
 .section-header { text-align:center; max-width:600px; margin-inline:auto; margin-bottom:64px; }
@@ -1287,10 +1289,44 @@ header .container {
 /* ============================================================
    CASES: BEFORE/AFTER VERGELIJKINGSSLIDER
 ============================================================ */
-.cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(440px,1fr)); gap: 40px; }
-.case-card { background: var(--clr-white); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
-.case-card__body { padding: 22px 26px 26px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-.case-card__body h3 { font-size: 1.15rem; color: var(--clr-heading); }
+@property --case-angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+
+.cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+@media (max-width: 860px) { .cases-grid { grid-template-columns: 1fr; } }
+.case-card {
+  position: relative;
+  background: var(--clr-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform .35s, box-shadow .35s;
+}
+.case-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.case-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(from var(--case-angle), var(--clr-accent), var(--clr-teal), var(--clr-coral), var(--clr-accent2), var(--clr-accent));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: .45;
+  transition: opacity .35s;
+  animation: caseBorderSpin 7s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+.case-card:hover::before { opacity: 1; animation-duration: 3s; }
+@keyframes caseBorderSpin { to { --case-angle: 360deg; } }
+@media (prefers-reduced-motion: reduce) { .case-card::before { animation: none; } }
+.case-card__head { padding: 24px 26px 0; display: flex; align-items: center; gap: 14px; }
+.case-card__head h3 { font-size: 1.2rem; color: var(--clr-heading); }
+.case-card__logo { width: 44px; height: 44px; border-radius: 10px; object-fit: contain; background: var(--clr-light); border: 1px solid var(--clr-border); flex-shrink: 0; }
+.case-card__desc { padding: 8px 26px 0; color: var(--clr-muted); font-size: .92rem; line-height: 1.6; }
+.case-card .case-compare { margin-top: 20px; }
+.case-card__foot { padding: 18px 26px 24px; }
 .case-card__live { color: var(--clr-accent); font-weight: 700; font-size: .88rem; text-decoration: none; white-space: nowrap; }
 .case-card__live:hover { color: var(--clr-accent-h); }
 .case-compare { position: relative; aspect-ratio: 16/11; overflow: hidden; background: #f1f3f4; user-select: none; touch-action: pan-y; }
@@ -1310,14 +1346,38 @@ header .container {
 .case-compare__handle-grip svg { width: 18px; height: 18px; }
 
 /* ============================================================
-   WERELDBOL (globe hero)
+   WERELDBOL (in de nederland-foto-slot op Over Ons)
 ============================================================ */
-.globe-hero { position: relative; overflow: hidden; border-radius: var(--radius-lg); background: radial-gradient(120% 120% at 50% -20%, #312e81, #0f0a2e 60%); padding: 56px 24px 0; text-align: center; }
-.globe-hero h2, .globe-hero p { color: #fff; position: relative; z-index: 1; }
-.globe-hero p { color: rgba(255,255,255,.6); max-width: 480px; margin: 12px auto 0; }
-.globe-hero__canvas-wrap { position: relative; margin: -8px auto 0; height: 360px; max-width: 560px; -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent); mask-image: linear-gradient(to bottom, #000 62%, transparent); }
-.globe-hero__canvas-wrap canvas { width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease; cursor: grab; }
-.globe-hero__canvas-wrap canvas.is-visible { opacity: 1; }
+.nederland-foto--globe {
+  position: relative;
+  height: 380px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  background: radial-gradient(130% 130% at 50% 15%, #383478 0%, #1e1b4b 55%, #0f0a2e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nederland-foto--globe::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 60px rgba(0,0,0,.35);
+  pointer-events: none;
+}
+.nederland-foto--globe canvas {
+  height: 88%;
+  aspect-ratio: 1;
+  width: auto;
+  opacity: 0;
+  transition: opacity 1s ease;
+  cursor: grab;
+}
+.nederland-foto--globe canvas.is-visible { opacity: 1; }
+.nederland-foto--globe canvas:active { cursor: grabbing; }
+@media (max-width: 768px) { .nederland-foto--globe { height: 260px; } }
 
 /* ============================================================
    404-PAGINA

@@ -48,9 +48,16 @@
     </section>
 
     <section class="section section--alt">
-      <div class="container">
-        <div class="cases-grid">
+      <div class="container container--wide">
+        <nav class="blog-pagination blog-pagination--top" id="casesPaginationTop" aria-label="Paginering boven"></nav>
+
+        <div class="cases-grid" id="casesGrid">
         <div class="case-card reveal">
+          <div class="case-card__head">
+            
+            <h3>Voorbeeldcase — vervang dit via het Sveltia-menu</h3>
+          </div>
+          <p class="case-card__desc">Korte omschrijving van het project komt hier: wat vroeg de klant, wat hebben we gebouwd.</p>
           <div class="case-compare" style="--split:50%;" data-case-compare>
             <div class="case-compare__frame case-compare__old">
               <div class="case-compare__bar"><span></span><span></span><span></span><span class="case-compare__label">ALT</span></div>
@@ -66,12 +73,11 @@
               </div>
             </div>
           </div>
-          <div class="case-card__body">
-            <h3>Voorbeeldcase — vervang dit via het Sveltia-menu</h3>
-            
-          </div>
+          
         </div>
         </div>
+
+        <nav class="blog-pagination blog-pagination--bottom" id="casesPaginationBottom" aria-label="Paginering onder"></nav>
       </div>
     </section>
 
@@ -87,5 +93,6 @@
   <div id="footer-placeholder"></div>
   <script src="/js/script.js"></script>
   <script src="/js/case-compare.js"></script>
+  <script src="/js/cases-pagination.js"></script>
 </body>
 </html>

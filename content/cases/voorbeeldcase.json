@@ -1,6 +1,8 @@
 {
   "slug": "voorbeeldcase",
   "titel": "Voorbeeldcase — vervang dit via het Sveltia-menu",
+  "logo": "",
+  "beschrijving": "Korte omschrijving van het project komt hier: wat vroeg de klant, wat hebben we gebouwd.",
   "foto_oud": "/assets/images/uploads/voorbeeldcase-oud.svg",
   "foto_nieuw": "/assets/images/uploads/voorbeeldcase-nieuw.svg",
   "link": ""

@@ -1,15 +1,14 @@
 import createGlobe from 'https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm';
 
 document.querySelectorAll('#worldGlobe').forEach((canvas) => {
-  const wrap = canvas.closest('.globe-hero__canvas-wrap');
-  if (!wrap) return;
-
   let width = 0;
   let phi = 0;
   let pointerInteracting = null;
   let pointerMovement = 0;
 
-  const onResize = () => { width = wrap.offsetWidth; };
+  // canvas zelf is via CSS (aspect-ratio:1) altijd vierkant, dus offsetWidth
+  // gebruiken i.p.v. de (rechthoekige) wrapper voorkomt een uitgerekte bol.
+  const onResize = () => { width = canvas.offsetWidth; };
   window.addEventListener('resize', onResize);
   onResize();
 

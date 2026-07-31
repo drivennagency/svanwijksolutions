@@ -75,6 +75,8 @@ collections:
     fields:
       - { label: "ID (geen spaties, bv. waterfords-cocktails)", name: slug, widget: string, pattern: ['^[a-z0-9-]+$', "Alleen kleine letters, cijfers en streepjes"] }
       - { label: "Titel (bv. 'Nieuwe website voor Waterfords Cocktails')", name: titel, widget: string }
+      - { label: "Logo van het bedrijf", name: logo, widget: image, required: false }
+      - { label: "Korte omschrijving (1-2 zinnen)", name: beschrijving, widget: text, required: false }
       - { label: "Screenshot oude website (volledige pagina)", name: foto_oud, widget: image }
       - { label: "Screenshot nieuwe website (volledige pagina)", name: foto_nieuw, widget: image }
       - { label: "Link naar de live website", name: link, widget: string, required: false }

@@ -405,7 +405,18 @@ def render_case_card(case, lang):
     live_link = ""
     if case.get("link"):
         live_link = f'<a href="{case["link"]}" target="_blank" rel="noopener noreferrer" class="case-card__live">{hero["live"]} &rarr;</a>'
+    logo_html = ""
+    if case.get("logo"):
+        logo_html = f'<img src="{case["logo"]}" alt="" class="case-card__logo" loading="lazy">'
+    desc_html = ""
+    if case.get("beschrijving"):
+        desc_html = f'<p class="case-card__desc">{case["beschrijving"]}</p>'
     return f'''        <div class="case-card reveal">
+          <div class="case-card__head">
+            {logo_html}
+            <h3>{case["titel"]}</h3>
+          </div>
+          {desc_html}
           <div class="case-compare" style="--split:50%;" data-case-compare>
             <div class="case-compare__frame case-compare__old">
               <div class="case-compare__bar"><span></span><span></span><span></span><span class="case-compare__label">{hero["old"]}</span></div>
@@ -421,10 +432,7 @@ def render_case_card(case, lang):
               </div>
             </div>
           </div>
-          <div class="case-card__body">
-            <h3>{case["titel"]}</h3>
-            {live_link}
-          </div>
+          {f'<div class="case-card__foot">{live_link}</div>' if live_link else ''}
         </div>
 '''
 
@@ -459,9 +467,13 @@ def render_cases_listing(cases, lang):
     </section>
 
     <section class="section section--alt">
-      <div class="container">
-        <div class="cases-grid">
+      <div class="container container--wide">
+        <nav class="blog-pagination blog-pagination--top" id="casesPaginationTop" aria-label="Paginering boven"></nav>
+
+        <div class="cases-grid" id="casesGrid">
 {cards}        </div>
+
+        <nav class="blog-pagination blog-pagination--bottom" id="casesPaginationBottom" aria-label="Paginering onder"></nav>
       </div>
     </section>
 
@@ -474,7 +486,7 @@ def render_cases_listing(cases, lang):
     </section>
   </main>
 '''
-    extra_scripts = '  <script src="/js/case-compare.js"></script>\n'
+    extra_scripts = '  <script src="/js/case-compare.js"></script>\n  <script src="/js/cases-pagination.js"></script>\n'
     html += FOOTER_AND_SCRIPTS.format(extra_scripts=extra_scripts)
     return html
 
