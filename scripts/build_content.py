@@ -11,6 +11,7 @@ import json
 import pathlib
 import re
 import sys
+from urllib.parse import urlparse
 
 import markdown
 
@@ -413,25 +414,42 @@ CASES_HEROES = {
 
 def render_case_card(case, lang):
     hero = CASES_HEROES[lang]
+    L = case.get(lang, {})
+    titel = L.get("titel") or L.get("title") or ""
+    beschrijving = L.get("beschrijving") or L.get("description") or L.get("beschreibung")
     live_link = ""
+    domain = ""
     if case.get("link"):
         live_link = f'<a href="{case["link"]}" target="_blank" rel="noopener noreferrer" class="case-card__live">{hero["live"]} &rarr;</a>'
+        domain = urlparse(case["link"]).netloc.removeprefix("www.")
     logo_html = ""
     if case.get("logo"):
         logo_html = f'<img src="{case["logo"]}" alt="" class="case-card__logo" loading="lazy">'
     desc_html = ""
-    if case.get("beschrijving"):
-        desc_html = f'<p class="case-card__desc">{case["beschrijving"]}</p>'
+    if beschrijving:
+        desc_html = f'<p class="case-card__desc">{beschrijving}</p>'
+
+    dots = ('<span class="case-compare__dot case-compare__dot--red"></span>'
+            '<span class="case-compare__dot case-compare__dot--yellow"></span>'
+            '<span class="case-compare__dot case-compare__dot--green"></span>')
+    url_pill = ""
+    if domain:
+        url_pill = (f'<div class="case-compare__url">'
+                    f'<svg class="case-compare__url-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
+                    f'stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"></rect>'
+                    f'<path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg><span>{domain}</span></div>')
+    else:
+        url_pill = '<div class="case-compare__url"></div>'
 
     if case.get("foto_oud"):
         # Voor/na-vergelijking: klant had al een website.
         visual = f'''<div class="case-compare" style="--split:50%;" data-case-compare>
             <div class="case-compare__frame case-compare__old">
-              <div class="case-compare__bar"><span></span><span></span><span></span><span class="case-compare__label">{hero["old"]}</span></div>
+              <div class="case-compare__bar">{dots}<div class="case-compare__url"></div><span class="case-compare__label">{hero["old"]}</span></div>
               <div class="case-compare__screen"><img src="{case["foto_oud"]}" alt="" loading="lazy"></div>
             </div>
             <div class="case-compare__frame case-compare__new">
-              <div class="case-compare__bar"><span></span><span></span><span></span><span class="case-compare__label">{hero["new"]}</span></div>
+              <div class="case-compare__bar">{dots}{url_pill}<span class="case-compare__label case-compare__label--new">{hero["new"]}</span></div>
               <div class="case-compare__screen"><img src="{case["foto_nieuw"]}" alt="" loading="lazy"></div>
             </div>
             <div class="case-compare__handle" data-case-handle>
@@ -444,7 +462,7 @@ def render_case_card(case, lang):
         # Geen oude website (klant had er nog geen): alleen de nieuwe site tonen, geen slider.
         visual = f'''<div class="case-compare case-compare--solo">
             <div class="case-compare__frame case-compare__new">
-              <div class="case-compare__bar"><span></span><span></span><span></span></div>
+              <div class="case-compare__bar">{dots}{url_pill}</div>
               <div class="case-compare__screen"><img src="{case["foto_nieuw"]}" alt="" loading="lazy"></div>
             </div>
           </div>'''
@@ -452,7 +470,7 @@ def render_case_card(case, lang):
     return f'''        <div class="case-card reveal">
           <div class="case-card__head">
             {logo_html}
-            <h3>{case["titel"]}</h3>
+            <h3>{titel}</h3>
           </div>
           {desc_html}
           {visual}

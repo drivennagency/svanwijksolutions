@@ -74,12 +74,28 @@ collections:
     extension: json
     format: json
     slug: "{{fields.slug}}"
-    summary: "{{titel}}"
+    summary: "{{nl.titel}}"
     fields:
       - { label: "ID (geen spaties, bv. waterfords-cocktails)", name: slug, widget: string, pattern: ['^[a-z0-9-]+$', "Alleen kleine letters, cijfers en streepjes"] }
-      - { label: "Titel (bv. 'Nieuwe website voor Waterfords Cocktails')", name: titel, widget: string }
       - { label: "Logo van het bedrijf", name: logo, widget: image, required: false }
-      - { label: "Korte omschrijving (1-2 zinnen)", name: beschrijving, widget: text, required: false }
       - { label: "Screenshot oude website (volledige pagina) — laat leeg als de klant nog geen website had, dan tonen we alleen de nieuwe site zonder vergelijkingsslider", name: foto_oud, widget: image, required: false }
       - { label: "Screenshot nieuwe website (volledige pagina)", name: foto_nieuw, widget: image }
       - { label: "Link naar de live website", name: link, widget: string, required: false }
+      - label: "Nederlands"
+        name: nl
+        widget: object
+        fields:
+          - { label: "Titel (bv. 'Nieuwe website voor Waterfords Cocktails')", name: titel, widget: string }
+          - { label: "Korte omschrijving (1-2 zinnen)", name: beschrijving, widget: text, required: false }
+      - label: "English"
+        name: en
+        widget: object
+        fields:
+          - { label: "Title", name: title, widget: string }
+          - { label: "Short description (1-2 sentences)", name: description, widget: text, required: false }
+      - label: "Deutsch"
+        name: de
+        widget: object
+        fields:
+          - { label: "Titel", name: titel, widget: string }
+          - { label: "Kurze Beschreibung (1-2 Sätze)", name: beschreibung, widget: text, required: false }

@@ -1,0 +1,19 @@
+{
+  "slug": "waterford-cocktails",
+  "logo": "/assets/images/uploads/logo.svg",
+  "foto_oud": "",
+  "foto_nieuw": "/assets/images/uploads/Schermopname_31-7-2026_131425_www.waterfordscocktails.com.jpeg",
+  "link": "https://www.waterfordscocktails.com/",
+  "nl": {
+    "titel": "Nieuwe website voor Waterfords Cocktails",
+    "beschrijving": "Een vernieuwde website voor Waterfords Cocktails gemaakt."
+  },
+  "en": {
+    "title": "New website for Waterfords Cocktails",
+    "description": "A refreshed website built for Waterfords Cocktails."
+  },
+  "de": {
+    "titel": "Neue Website für Waterfords Cocktails",
+    "beschreibung": "Eine neue Website für Waterfords Cocktails erstellt."
+  }
+}
