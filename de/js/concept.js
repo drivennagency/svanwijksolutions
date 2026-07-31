@@ -444,7 +444,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var custom = document.createElement('li');
     custom.className = 'sug-custom';
     custom.setAttribute('role', 'option');
-    custom.innerHTML = 'Verwenden Sie <strong>&ldquo;' + trimmed + '&rdquo;</strong> als meinen Unternehmenstyp';
+    custom.textContent = 'Verwenden Sie ';
+    var customStrong = document.createElement('strong');
+    customStrong.textContent = '“' + trimmed + '”';
+    custom.append(customStrong, ' als meinen Unternehmenstyp');
     custom.addEventListener('mousedown', function (ev) {
       ev.preventDefault();
       kiesBranche({ naam: trimmed, cat: null, paginas: [], custom: true });
@@ -466,8 +469,14 @@ document.addEventListener('DOMContentLoaded', function () {
     var tag = document.createElement('span');
     tag.className = 'branche-tag';
     var label = b.cat ? (b.naam + ' \u00b7 ' + b.cat) : b.naam;
-    tag.innerHTML = '<span>' + label + '</span> <button type="button" aria-label="Wijzig bedrijfstype">\u2715</button>';
-    tag.querySelector('button').addEventListener('click', function () {
+    var labelSpan = document.createElement('span');
+    labelSpan.textContent = label;
+    var removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.setAttribute('aria-label', 'Wijzig bedrijfstype');
+    removeBtn.textContent = '\u2715';
+    tag.append(labelSpan, ' ', removeBtn);
+    removeBtn.addEventListener('click', function () {
       hiddenBranche.value = '';
       tagWrap.innerHTML = '';
       resetPaginaVoorstel();
@@ -528,9 +537,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (b.custom) {
       // Onbekende/onduidelijke branche: niets aanvinken, klant kiest zelf
-      tekst.innerHTML = '<strong>Unternehmenstyp: ' + b.naam + '.</strong> ' +
-        'Diesen Unternehmenstyp kennen wir nicht genau, daher \u00fcberlassen wir Ihnen bewusst die Wahl. ' +
-        'Kreuzen Sie unten selbst an, welche Seiten Sie m\u00f6chten. Klicken Sie bei einer Seite auf "Elemente w\u00e4hlen" f\u00fcr mehr Erkl\u00e4rung und Optionen.';
+      tekst.textContent = '';
+      var customLabel = document.createElement('strong');
+      customLabel.textContent = 'Unternehmenstyp: ' + b.naam + '.';
+      tekst.append(customLabel,
+        ' Diesen Unternehmenstyp kennen wir nicht genau, daher \u00fcberlassen wir Ihnen bewusst die Wahl. ' +
+        'Kreuzen Sie unten selbst an, welche Seiten Sie m\u00f6chten. Klicken Sie bei einer Seite auf "Elemente w\u00e4hlen" f\u00fcr mehr Erkl\u00e4rung und Optionen.');
       banner.classList.add('visible');
       calcPrijs();
       updateHiddenPages();
@@ -539,9 +551,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     var namen = b.paginas.map(function (p) { return PAGINA_LABELS[p.id] || p.id; });
-    tekst.innerHTML = '<strong>Unser Vorschlag f\u00fcr ' + b.naam + '.</strong> ' +
-      'Basierend auf Ihrem Unternehmenstyp empfehlen wir diese Seiten: <strong>' + namen.join(', ') +
-      '</strong>. Bei jeder Seite lesen Sie, warum sie gerade f\u00fcr Sie wichtig ist. Alles kann angepasst werden.';
+    tekst.textContent = '';
+    var voorstelLabel = document.createElement('strong');
+    voorstelLabel.textContent = 'Unser Vorschlag f\u00fcr ' + b.naam + '.';
+    var paginaLijst = document.createElement('strong');
+    paginaLijst.textContent = namen.join(', ');
+    tekst.append(voorstelLabel,
+      ' Basierend auf Ihrem Unternehmenstyp empfehlen wir diese Seiten: ', paginaLijst,
+      '. Bei jeder Seite lesen Sie, warum sie gerade f\u00fcr Sie wichtig ist. Alles kann angepasst werden.');
     banner.classList.add('visible');
 
     b.paginas.forEach(function (p) {
@@ -711,8 +728,15 @@ document.addEventListener('DOMContentLoaded', function () {
       
       var tag = document.createElement('span');
       tag.className = 'taal-tag';
-      tag.innerHTML = vlagHTML(taal) + ' ' + taal + ' <button type="button" class="taal-tag__remove" aria-label="Verwijder ' + taal + '">\u2715</button>';
-      tag.querySelector('.taal-tag__remove').addEventListener('click', function () {
+      var flagWrap = document.createElement('span');
+      flagWrap.innerHTML = vlagHTML(taal); // veilig: vlagHTML() geeft altijd vaste markup terug, nooit gebruikersinvoer
+      var removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.className = 'taal-tag__remove';
+      removeBtn.setAttribute('aria-label', 'Verwijder ' + taal);
+      removeBtn.textContent = '\u2715';
+      tag.append(flagWrap, ' ' + taal + ' ', removeBtn);
+      removeBtn.addEventListener('click', function () {
         gekozenTalen = gekozenTalen.filter(function (t) { return t !== taal; });
         renderTaalTags(); updateHiddenTalen(); calcPrijs();
       });
