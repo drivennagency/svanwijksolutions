@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
+  <link rel="preload" as="image" href="/assets/images/wereldwijd-hero-poster.jpg" fetchpriority="high">
   <link rel="canonical" href="https://www.svanwijksolutions.nl/">
   <link rel="alternate" hreflang="nl" href="https://www.svanwijksolutions.nl/">
   <link rel="alternate" hreflang="en" href="https://www.svanwijksolutions.nl/eng/">
@@ -112,15 +113,11 @@
 
   <main>
 
-    <!-- VIDEO HERO -->
-    <section class="video-hero" aria-hidden="true">
-      <video autoplay muted loop playsinline preload="auto" poster="/assets/images/wereldwijd-hero-poster.jpg">
-        <source src="/assets/video/wereldwijd-hero.mp4" type="video/mp4">
-      </video>
-    </section>
+    <!-- HERO (met video-achtergrond) -->
+    <section class="hero hero--video">
+      <video class="hero__bg-video" muted loop playsinline preload="none" poster="/assets/images/wereldwijd-hero-poster.jpg" data-src="/assets/video/wereldwijd-hero.mp4" aria-hidden="true"></video>
+      <div class="hero__video-overlay" aria-hidden="true"></div>
 
-    <!-- HERO -->
-    <section class="hero">
       <div class="hero__particles" aria-hidden="true">
         <span></span><span></span><span></span><span></span><span></span>
         <span></span><span></span><span></span><span></span><span></span>

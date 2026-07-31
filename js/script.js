@@ -313,6 +313,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ============================================================
+     9b. HERO-ACHTERGRONDVIDEO
+     Laadt de (relatief zware) video alleen op tablet/desktop —
+     op mobiel blijft het bij het lichte posterframe, dat scheelt
+     flink in laadtijd en dataverbruik voor het merendeel van de
+     bezoekers.
+  ============================================================ */
+  const initHeroVideo = () => {
+    const video = document.querySelector('.hero__bg-video');
+    if (!video || !video.dataset.src) return;
+    if (!window.matchMedia('(min-width: 768px)').matches) return;
+    video.src = video.dataset.src;
+    video.load();
+    video.play().catch(() => {}); // negeer als de browser autoplay blokkeert
+  };
+  initHeroVideo();
+
+
+  /* ============================================================
      10. TESTIMONIALS MARQUEE
      Vult de rij maar een enkele (of te weinig) testimonials de
      breedte van het scherm niet, toon ze dan gewoon statisch en
