@@ -135,6 +135,14 @@ def md_to_html(text):
     return markdown.markdown(text, extensions=["extra"])
 
 
+WORDS_PER_MINUTE = 200
+
+
+def reading_time_minutes(markdown_text):
+    word_count = len(re.findall(r"\S+", markdown_text or ""))
+    return max(1, round(word_count / WORDS_PER_MINUTE))
+
+
 def head_common(lang, title, description, canonical_path, og_type="website", og_image=None, extra_head=""):
     cfg = LANGS[lang]
     canon_nl = f"https://www.svanwijksolutions.nl{canonical_path['nl']}"
@@ -199,6 +207,7 @@ def render_post(post, lang):
     summary_field = L.get("samenvatting") or L.get("summary") or L.get("zusammenfassung")
     body_field = L.get("tekst") or L.get("text")
     cat_label = CATEGORY_LABELS.get(post["category"], {}).get(lang, post["category"])
+    reading_time = reading_time_minutes(body_field)
 
     page_title = f"{title_field} | S. van Wijk Solutions"
     canonical_path = {
@@ -238,7 +247,7 @@ def render_post(post, lang):
           <h1>{title_field}</h1>
           <div class="blog-hero__meta">
             <span>{ICON_CAL} {fmt_date(post["date"], lang)}</span>
-            <span>{ICON_CLOCK} {cfg["min_read"].format(n=post["reading_time_min"])}</span>
+            <span>{ICON_CLOCK} {cfg["min_read"].format(n=reading_time)}</span>
             <span>{ICON_USER} {cfg["by_author"]}</span>
           </div>
         </div>
@@ -272,7 +281,9 @@ def blog_card_html(post, lang, id_prefix="", delay_class=""):
     L = post[lang]
     title_field = L.get("titel") or L.get("title")
     summary_field = L.get("samenvatting") or L.get("summary") or L.get("zusammenfassung")
+    body_field = L.get("tekst") or L.get("text")
     cat_label = CATEGORY_LABELS.get(post["category"], {}).get(lang, post["category"])
+    reading_time = reading_time_minutes(body_field)
     href = f"/blog/{post['slug']}.html" if lang == "nl" else f"{cfg['prefix']}/blog/{post['slug']}.html"
     date_label = fmt_date(post["date"], lang)
     return f'''          <article class="blog-card reveal{delay_class}" data-search="{(title_field + " " + summary_field).lower().replace('"', '&quot;')}" data-date="{post['date']}">
@@ -284,7 +295,7 @@ def blog_card_html(post, lang, id_prefix="", delay_class=""):
                 <p>{summary_field}</p>
                 <div class="blog-card__meta">
                   <span>{ICON_CAL} {date_label}</span>
-                  <span>{ICON_CLOCK} {cfg["min_read"].format(n=post["reading_time_min"])}</span>
+                  <span>{ICON_CLOCK} {cfg["min_read"].format(n=reading_time)}</span>
                 </div>
               </div>
             </a>

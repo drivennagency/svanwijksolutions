@@ -18,6 +18,8 @@ collections:
     label_singular: Blogpost
     folder: content/blog
     create: true
+    extension: json
+    format: json
     slug: "{{fields.slug}}"
     summary: "{{nl.titel}} — {{date}}"
     fields:
@@ -52,6 +54,8 @@ collections:
     label_singular: Testimonial
     folder: content/testimonials
     create: true
+    extension: json
+    format: json
     slug: "{{fields.slug}}"
     summary: "{{naam}} — {{bedrijf}}"
     fields:
@@ -67,6 +71,8 @@ collections:
     label_singular: Case
     folder: content/cases
     create: true
+    extension: json
+    format: json
     slug: "{{fields.slug}}"
     summary: "{{titel}}"
     fields:
