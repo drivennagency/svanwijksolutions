@@ -7,7 +7,7 @@
   <meta name="description" content="Get to know S. van Wijk Solutions, founded by Sem van Wijk. Passionate about code, design, and client success.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <link rel="canonical" href="https://www.svanwijksolutions.nl/eng/over-ons.html">
   <link rel="alternate" hreflang="nl" href="https://www.svanwijksolutions.nl/over-ons.html">
@@ -49,6 +49,8 @@
         <li><a href="/eng/diensten.html" data-page="diensten">Services</a></li>
         <li><a href="/eng/over-ons.html" data-page="over-ons">About Us</a></li>
         <li><a href="/eng/contact.html" data-page="contact">Contact</a></li>
+        <li><a href="/eng/blog.html" data-page="blog">Blog</a></li>
+        <li><a href="/eng/cases.html" data-page="cases">Cases</a></li>
       </ul>
 
       <div class="nav__right">
@@ -82,6 +84,8 @@
       <li><a href="/eng/diensten.html">Services</a></li>
       <li><a href="/eng/over-ons.html">About Us</a></li>
       <li><a href="/eng/contact.html">Contact</a></li>
+      <li><a href="/eng/blog.html">Blog</a></li>
+      <li><a href="/eng/cases.html">Cases</a></li>
     </ul>
     <a href="/eng/concept.html" class="announce-mobile-cta">Request your free website concept here</a>
     <div class="lang-switch lang-switch--mobile">
@@ -158,14 +162,26 @@
       <div class="container">
         <div class="nederland-grid reveal">
           <div class="nederland-tekst">
-            <span class="tag tag--fresh">ALL OF THE NETHERLANDS</span>
-            <h2>We build websites for businesses across the Netherlands</h2>
-            <p>Based in the Westland region, we work with clients throughout the Netherlands. Distance is never an obstacle: we serve businesses from north to south, east to west.</p>
+            <span class="tag tag--fresh">WORLDWIDE</span>
+            <h2>We build websites for businesses all over the world</h2>
+            <p>Based in the Westland region, we work with clients all over the world. Distance is never an obstacle: thanks to fully digital collaboration, we serve business owners on every continent.</p>
             <p style="margin-top:12px;">Everything works online and in person: from the first introductory call to final delivery. Flexible, efficient, and personal.</p>
             <a href="/eng/contact.html" class="btn btn--primary" style="margin-top:24px;display:inline-block;">Get in touch</a>
           </div>
           <div class="nederland-foto reveal reveal--delay-1">
             <img src="/assets/images/holland.PNG" alt="Aerial photo of a Dutch city with digital connections" loading="lazy" width="800" height="534" class="nederland-foto__img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="globe-hero reveal">
+          <h2>Wherever you are, we build together</h2>
+          <p>One time zone apart or twelve: the collaboration runs fully digital, from concept to launch.</p>
+          <div class="globe-hero__canvas-wrap">
+            <canvas id="worldGlobe" aria-hidden="true"></canvas>
           </div>
         </div>
       </div>
@@ -237,6 +253,7 @@
           <li><a href="/eng/over-ons.html">About Us</a></li>
           <li><a href="/eng/contact.html">Contact</a></li>
           <li><a href="/eng/blog.html">Blog</a></li>
+          <li><a href="/eng/cases.html">Cases</a></li>
           <li><a href="/eng/concept.html">Free Concept</a></li>
         </ul>
       </div>
@@ -278,5 +295,6 @@
   if (yr) yr.textContent = new Date().getFullYear();
 </script></div>
   <script src="/js/script.js"></script>
+  <script type="module" src="/js/globe.js"></script>
 </body>
 </html>

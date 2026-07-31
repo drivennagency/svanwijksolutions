@@ -1,0 +1,80 @@
+backend:
+  name: github
+  repo: svanwijksolutions/svanwijksolutions
+  branch: main
+  base_url: https://svanwijksolutionscms.sem-f7d.workers.dev
+  auth_endpoint: auth
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+site_url: https://www.svanwijksolutions.nl
+display_url: https://www.svanwijksolutions.nl
+logo_url: /assets/images/logowit.svg
+
+collections:
+  - name: blog
+    label: Blog
+    label_singular: Blogpost
+    folder: content/blog
+    create: true
+    slug: "{{fields.slug}}"
+    summary: "{{nl.titel}} — {{date}}"
+    fields:
+      - { label: "URL-slug (geen spaties, geen hoofdletters, bv. mijn-artikel)", name: slug, widget: string, pattern: ['^[a-z0-9-]+$', "Alleen kleine letters, cijfers en streepjes"] }
+      - { label: "Datum", name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD-MM-YYYY", time_format: false }
+      - label: "Categorie"
+        name: category
+        widget: select
+        options: ["Tips", "SEO", "Branche", "Lokaal", "Nieuws"]
+      - { label: "Afbeelding (zelfde foto voor alle talen)", name: image, widget: image }
+      - label: "Nederlands"
+        name: nl
+        widget: object
+        fields:
+          - { label: "Titel", name: titel, widget: string }
+          - { label: "Samenvatting (voor kaartjes/SEO-description)", name: samenvatting, widget: text }
+          - { label: "Tekst", name: tekst, widget: markdown }
+      - label: "English"
+        name: en
+        widget: object
+        fields:
+          - { label: "Title", name: title, widget: string }
+          - { label: "Summary (for cards/SEO description)", name: summary, widget: text }
+          - { label: "Text", name: text, widget: markdown }
+      - label: "Deutsch"
+        name: de
+        widget: object
+        fields:
+          - { label: "Titel", name: titel, widget: string }
+          - { label: "Zusammenfassung (für Karten/SEO-Beschreibung)", name: zusammenfassung, widget: text }
+          - { label: "Text", name: text, widget: markdown }
+
+  - name: testimonials
+    label: Testimonials
+    label_singular: Testimonial
+    folder: content/testimonials
+    create: true
+    slug: "{{fields.slug}}"
+    summary: "{{naam}} — {{bedrijf}}"
+    fields:
+      - { label: "ID (geen spaties, bv. jan-de-vries)", name: slug, widget: string, pattern: ['^[a-z0-9-]+$', "Alleen kleine letters, cijfers en streepjes"] }
+      - { label: "Naam", name: naam, widget: string }
+      - { label: "Bedrijfsnaam", name: bedrijf, widget: string }
+      - { label: "Quote / testimonial-tekst", name: tekst, widget: text }
+      - { label: "Logo van het bedrijf", name: logo, widget: image, required: false }
+      - { label: "Link naar de website van het bedrijf", name: link, widget: string, required: false }
+
+  - name: cases
+    label: Cases
+    label_singular: Case
+    folder: content/cases
+    create: true
+    slug: "{{fields.slug}}"
+    summary: "{{titel}}"
+    fields:
+      - { label: "ID (geen spaties, bv. waterfords-cocktails)", name: slug, widget: string, pattern: ['^[a-z0-9-]+$', "Alleen kleine letters, cijfers en streepjes"] }
+      - { label: "Titel (bv. 'Nieuwe website voor Waterfords Cocktails')", name: titel, widget: string }
+      - { label: "Screenshot oude website (volledige pagina)", name: foto_oud, widget: image }
+      - { label: "Screenshot nieuwe website (volledige pagina)", name: foto_nieuw, widget: image }
+      - { label: "Link naar de live website", name: link, widget: string, required: false }

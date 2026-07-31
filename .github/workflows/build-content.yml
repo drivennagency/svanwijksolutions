@@ -1,0 +1,40 @@
+name: Build content (Sveltia CMS)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "content/**"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install markdown
+
+      - name: Genereer pagina's uit content/
+        run: python3 scripts/build_content.py
+
+      - name: Commit en push gegenereerde pagina's
+        run: |
+          git config user.name "svanwijksolutions-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add blog/ eng/blog/ de/blog/ blog.html eng/blog.html de/blog.html \
+                  cases.html eng/cases.html de/cases.html \
+                  index.html eng/index.html de/index.html sitemap.xml
+          if git diff --cached --quiet; then
+            echo "Geen wijzigingen na build, niets te committen."
+            exit 0
+          fi
+          git commit -m "Auto-build: content bijgewerkt via Sveltia CMS"
+          git push

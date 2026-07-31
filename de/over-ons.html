@@ -7,7 +7,7 @@
   <meta name="description" content="Lernen Sie S. van Wijk Solutions kennen, gegründet von Sem van Wijk. Leidenschaft für Code, Design und Kundenerfolg.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <link rel="canonical" href="https://www.svanwijksolutions.nl/de/over-ons.html">
   <link rel="alternate" hreflang="nl" href="https://www.svanwijksolutions.nl/over-ons.html">
@@ -49,6 +49,8 @@
         <li><a href="/de/diensten.html" data-page="diensten">Leistungen</a></li>
         <li><a href="/de/over-ons.html" data-page="over-ons">Über Uns</a></li>
         <li><a href="/de/contact.html" data-page="contact">Kontakt</a></li>
+        <li><a href="/de/blog.html" data-page="blog">Blog</a></li>
+        <li><a href="/de/cases.html" data-page="cases">Cases</a></li>
       </ul>
 
       <div class="nav__right">
@@ -82,6 +84,8 @@
       <li><a href="/de/diensten.html">Leistungen</a></li>
       <li><a href="/de/over-ons.html">Über Uns</a></li>
       <li><a href="/de/contact.html">Kontakt</a></li>
+      <li><a href="/de/blog.html">Blog</a></li>
+      <li><a href="/de/cases.html">Cases</a></li>
     </ul>
     <a href="/de/concept.html" class="announce-mobile-cta">Kostenloses Website-Konzept anfragen</a>
     <div class="lang-switch lang-switch--mobile">
@@ -158,14 +162,26 @@
       <div class="container">
         <div class="nederland-grid reveal">
           <div class="nederland-tekst">
-            <span class="tag tag--fresh">GANZ NIEDERLANDE</span>
-            <h2>Wir entwickeln Websites für Unternehmen in den gesamten Niederlanden</h2>
-            <p>Von der Region Westland aus arbeiten wir für Kunden in den gesamten Niederlanden. Entfernung ist für uns kein Hindernis: wir bedienen Unternehmer von Nord bis Süd, von Ost bis West.</p>
+            <span class="tag tag--fresh">WELTWEIT</span>
+            <h2>Wir entwickeln Websites für Unternehmen auf der ganzen Welt</h2>
+            <p>Von der Region Westland aus arbeiten wir für Kunden auf der ganzen Welt. Entfernung ist für uns kein Hindernis: dank vollständig digitaler Zusammenarbeit bedienen wir Unternehmer auf jedem Kontinent.</p>
             <p style="margin-top:12px;">Alles ist möglich, online und persönlich: vom ersten Kennenlerngespräch bis zur Lieferung. Flexibel, effizient und persönlich.</p>
             <a href="/de/contact.html" class="btn btn--primary" style="margin-top:24px;display:inline-block;">Kontakt aufnehmen</a>
           </div>
           <div class="nederland-foto reveal reveal--delay-1">
             <img src="/assets/images/holland.PNG" alt="Luftaufnahme einer niederländischen Stadt mit digitalen Verbindungen" loading="lazy" width="800" height="534" class="nederland-foto__img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="globe-hero reveal">
+          <h2>Egal, wo Sie sind, wir bauen mit</h2>
+          <p>Eine Zeitzone Unterschied oder zwölf: Die Zusammenarbeit läuft vollständig digital, vom Konzept bis zum Launch.</p>
+          <div class="globe-hero__canvas-wrap">
+            <canvas id="worldGlobe" aria-hidden="true"></canvas>
           </div>
         </div>
       </div>
@@ -237,6 +253,7 @@
           <li><a href="/de/over-ons.html">Über Uns</a></li>
           <li><a href="/de/contact.html">Kontakt</a></li>
           <li><a href="/de/blog.html">Blog</a></li>
+          <li><a href="/de/cases.html">Cases</a></li>
           <li><a href="/de/concept.html">Kostenloses Konzept</a></li>
         </ul>
       </div>
@@ -278,5 +295,6 @@
   if (yr) yr.textContent = new Date().getFullYear();
 </script></div>
   <script src="/js/script.js"></script>
+  <script type="module" src="/js/globe.js"></script>
 </body>
 </html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina niet gevonden | S. van Wijk Solutions</title>
+  <meta name="description" content="Deze pagina bestaat niet (meer). Ga terug naar de homepage of bekijk onze diensten.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="manifest" href="/assets/images/site.webmanifest">
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="error-404">
+      <div class="container">
+        <div class="error-404__code">404</div>
+        <h1 data-i18n="h1">Deze pagina bestaat niet (meer)</h1>
+        <p data-i18n="p">De link klopt niet meer, of de pagina is verplaatst. Ga terug naar de homepage, of bekijk wat we voor je kunnen doen.</p>
+        <div class="error-404__btns">
+          <a href="/index.html" class="btn btn--primary" data-i18n-href="home" data-i18n="home">Naar de homepage</a>
+          <a href="/diensten.html" class="btn btn--outline" data-i18n-href="diensten" data-i18n="diensten">Onze diensten</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="/js/script.js"></script>
+  <script>
+    (function () {
+      // GitHub Pages serveert altijd DIT bestand als 404, ongeacht het pad —
+      // dus vertalen we hier zelf op basis van het opgevraagde pad (zelfde
+      // detectLang-logica als js/script.js: /eng/ -> en, /de/ -> de).
+      var m = window.location.pathname.match(/^\/(eng|de)(\/|$)/);
+      var lang = !m ? 'nl' : (m[1] === 'eng' ? 'en' : m[1]);
+      if (lang === 'nl') return;
+      var strings = {
+        en: {
+          title: 'Page not found | S. van Wijk Solutions',
+          h1: 'This page no longer exists',
+          p: 'The link is outdated, or the page has moved. Head back to the homepage, or see what we can do for you.',
+          home: 'Go to homepage', homeHref: '/eng/index.html',
+          diensten: 'Our services', dienstenHref: '/eng/diensten.html'
+        },
+        de: {
+          title: 'Seite nicht gefunden | S. van Wijk Solutions',
+          h1: 'Diese Seite existiert nicht mehr',
+          p: 'Der Link ist nicht mehr aktuell, oder die Seite wurde verschoben. Gehen Sie zurück zur Startseite oder sehen Sie, was wir für Sie tun können.',
+          home: 'Zur Startseite', homeHref: '/de/index.html',
+          diensten: 'Unsere Leistungen', dienstenHref: '/de/diensten.html'
+        }
+      }[lang];
+      document.documentElement.lang = lang;
+      document.title = strings.title;
+      document.querySelector('[data-i18n="h1"]').textContent = strings.h1;
+      document.querySelector('[data-i18n="p"]').textContent = strings.p;
+      var homeBtn = document.querySelector('[data-i18n="home"]');
+      homeBtn.textContent = strings.home;
+      homeBtn.href = strings.homeHref;
+      var dienstenBtn = document.querySelector('[data-i18n="diensten"]');
+      dienstenBtn.textContent = strings.diensten;
+      dienstenBtn.href = strings.dienstenHref;
+    })();
+  </script>
+</body>
+</html>
