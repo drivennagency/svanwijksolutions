@@ -23,10 +23,7 @@ collections:
     fields:
       - { label: "URL-slug (geen spaties, geen hoofdletters, bv. mijn-artikel)", name: slug, widget: string, pattern: ['^[a-z0-9-]+$', "Alleen kleine letters, cijfers en streepjes"] }
       - { label: "Datum", name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD-MM-YYYY", time_format: false }
-      - label: "Categorie"
-        name: category
-        widget: select
-        options: ["Tips", "SEO", "Branche", "Lokaal", "Nieuws"]
+      - { label: "Categorie (typ zelf een woord, bv. Tips, SEO, Branche...)", name: category, widget: string }
       - { label: "Afbeelding (zelfde foto voor alle talen)", name: image, widget: image }
       - label: "Nederlands"
         name: nl
@@ -77,6 +74,6 @@ collections:
       - { label: "Titel (bv. 'Nieuwe website voor Waterfords Cocktails')", name: titel, widget: string }
       - { label: "Logo van het bedrijf", name: logo, widget: image, required: false }
       - { label: "Korte omschrijving (1-2 zinnen)", name: beschrijving, widget: text, required: false }
-      - { label: "Screenshot oude website (volledige pagina)", name: foto_oud, widget: image }
+      - { label: "Screenshot oude website (volledige pagina) — laat leeg als de klant nog geen website had, dan tonen we alleen de nieuwe site zonder vergelijkingsslider", name: foto_oud, widget: image, required: false }
       - { label: "Screenshot nieuwe website (volledige pagina)", name: foto_nieuw, widget: image }
       - { label: "Link naar de live website", name: link, widget: string, required: false }

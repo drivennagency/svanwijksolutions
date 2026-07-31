@@ -411,13 +411,10 @@ def render_case_card(case, lang):
     desc_html = ""
     if case.get("beschrijving"):
         desc_html = f'<p class="case-card__desc">{case["beschrijving"]}</p>'
-    return f'''        <div class="case-card reveal">
-          <div class="case-card__head">
-            {logo_html}
-            <h3>{case["titel"]}</h3>
-          </div>
-          {desc_html}
-          <div class="case-compare" style="--split:50%;" data-case-compare>
+
+    if case.get("foto_oud"):
+        # Voor/na-vergelijking: klant had al een website.
+        visual = f'''<div class="case-compare" style="--split:50%;" data-case-compare>
             <div class="case-compare__frame case-compare__old">
               <div class="case-compare__bar"><span></span><span></span><span></span><span class="case-compare__label">{hero["old"]}</span></div>
               <div class="case-compare__screen"><img src="{case["foto_oud"]}" alt="" loading="lazy"></div>
@@ -431,7 +428,23 @@ def render_case_card(case, lang):
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 3 12 9 6"></polyline><polyline points="15 6 21 12 15 18"></polyline></svg>
               </div>
             </div>
+          </div>'''
+    else:
+        # Geen oude website (klant had er nog geen): alleen de nieuwe site tonen, geen slider.
+        visual = f'''<div class="case-compare case-compare--solo">
+            <div class="case-compare__frame case-compare__new">
+              <div class="case-compare__bar"><span></span><span></span><span></span></div>
+              <div class="case-compare__screen"><img src="{case["foto_nieuw"]}" alt="" loading="lazy"></div>
+            </div>
+          </div>'''
+
+    return f'''        <div class="case-card reveal">
+          <div class="case-card__head">
+            {logo_html}
+            <h3>{case["titel"]}</h3>
           </div>
+          {desc_html}
+          {visual}
           {f'<div class="case-card__foot">{live_link}</div>' if live_link else ''}
         </div>
 '''
@@ -492,9 +505,13 @@ def render_cases_listing(cases, lang):
 
 
 def testimonial_card_html(t):
-    logo_html = ""
     if t.get("logo"):
         logo_html = f'<img src="{t["logo"]}" alt="" class="testimonial-card__logo" loading="lazy">'
+    else:
+        # Geen logo aangeleverd: toon een letter-avatar zodat het blokje
+        # er nog steeds verzorgd uitziet in plaats van een lege ruimte.
+        initial = (t.get("naam", "") or "?").strip()[:1].upper() or "?"
+        logo_html = f'<span class="testimonial-card__logo testimonial-card__logo--fallback" aria-hidden="true">{initial}</span>'
     company_html = t.get("bedrijf", "")
     if t.get("link"):
         company_html = f'<a href="{t["link"]}" target="_blank" rel="noopener noreferrer" class="testimonial-card__company-link">{t.get("bedrijf", "")}</a>'
