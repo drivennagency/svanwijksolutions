@@ -352,7 +352,7 @@ def render_blog_listing(posts, lang):
     </section>
 
     <section class="section section--alt">
-      <div class="container container--wide">
+      <div class="container container--wide container--blog-wide">
         <div class="blog-toolbar">
           <div class="blog-search">
             {ICON_SEARCH}
