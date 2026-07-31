@@ -1,9 +1,9 @@
 {
-  "slug": "voorbeeldcase",
-  "titel": "Voorbeeldcase — vervang dit via het Sveltia-menu",
-  "logo": "",
-  "beschrijving": "Korte omschrijving van het project komt hier: wat vroeg de klant, wat hebben we gebouwd.",
-  "foto_oud": "/assets/images/uploads/voorbeeldcase-oud.svg",
-  "foto_nieuw": "/assets/images/uploads/voorbeeldcase-nieuw.svg",
-  "link": ""
+  "slug": "waterford-cocktails",
+  "titel": "Nieuwe website voor Waterfords Cocktails",
+  "logo": "/assets/images/uploads/logo.svg",
+  "beschrijving": "Een vernieuwde website voor Waterfords Cocktails gemaakt.",
+  "foto_oud": "",
+  "foto_nieuw": "/assets/images/uploads/Schermopname_31-7-2026_131425_www.waterfordscocktails.com.jpeg",
+  "link": "https://www.waterfordscocktails.com/"
 }
