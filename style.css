@@ -1270,8 +1270,10 @@ header .container {
 .testimonials-marquee { padding: 64px 0 72px; overflow: hidden; }
 .testimonials-marquee__head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
 .testimonials-marquee__viewport { position: relative; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.testimonials-marquee__track { display: flex; gap: 20px; width: max-content; animation: testimonialsScroll 42s linear infinite; }
-.testimonials-marquee__viewport:hover .testimonials-marquee__track { animation-play-state: paused; }
+.testimonials-marquee__viewport--static { display: flex; justify-content: center; -webkit-mask-image: none; mask-image: none; }
+.testimonials-marquee__track { display: flex; gap: 20px; width: max-content; }
+.testimonials-marquee__track--scrolling { animation: testimonialsScroll 42s linear infinite; }
+.testimonials-marquee__viewport:hover .testimonials-marquee__track--scrolling { animation-play-state: paused; }
 @keyframes testimonialsScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .testimonial-card { flex: 0 0 auto; width: 340px; background: var(--clr-white); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: 26px 26px 22px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 16px; }
 .testimonial-card__text { font-size: .94rem; line-height: 1.65; color: var(--clr-text); }
@@ -1284,7 +1286,7 @@ header .container {
 .testimonial-card__company { font-size: .8rem; color: var(--clr-muted); }
 .testimonial-card__company-link { color: var(--clr-accent); text-decoration: none; }
 .testimonial-card__company-link:hover { text-decoration: underline; }
-@media (prefers-reduced-motion: reduce) { .testimonials-marquee__track { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .testimonials-marquee__track--scrolling { animation: none; } }
 
 /* ============================================================
    BLOG: ZOEKBALK + PAGINERING

@@ -557,13 +557,11 @@ def update_homepage(lang, posts, testimonials):
     cards = "".join(blog_card_html(p, lang, delay_class=f" reveal--delay-{i + 1}") for i, p in enumerate(latest3))
     text = inject_between_markers(text, "<!-- BLOG_CARDS:START -->", "<!-- BLOG_CARDS:END -->", cards)
 
-    # Herhaal de set genoeg keer zodat de track (bij translateX(-50%)) altijd
-    # minstens ~4200px breed is, ook bij weinig testimonials: anders is de
-    # baan korter dan het (brede) scherm en ontstaat er een leeg vlak
-    # voordat de loop opnieuw begint.
-    CARD_W = 360  # kaartbreedte + gap, zie .testimonial-card in style.css
-    repeats = max(2, -(-4200 // (max(1, len(testimonials)) * CARD_W)))
-    t_cards = "".join(testimonial_card_html(t) for t in testimonials) * repeats
+    # Eén exemplaar per testimonial: of de rij moet doorlopend bewegen
+    # (en dus verdubbeld moet worden voor een naadloze loop) of statisch
+    # getoond kan worden, hangt af van de daadwerkelijke schermbreedte —
+    # dat bepaalt js/script.js runtime (zie initTestimonialsMarquee).
+    t_cards = "".join(testimonial_card_html(t) for t in testimonials)
     text = inject_between_markers(text, "<!-- TESTIMONIALS_CARDS:START -->", "<!-- TESTIMONIALS_CARDS:END -->", t_cards)
 
     path.write_text(text, encoding="utf-8")

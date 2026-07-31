@@ -311,4 +311,52 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   initHeroStage();
 
+
+  /* ============================================================
+     10. TESTIMONIALS MARQUEE
+     Vult de rij maar een enkele (of te weinig) testimonials de
+     breedte van het scherm niet, toon ze dan gewoon statisch en
+     gecentreerd. Pas zodra de kaarten de volledige rij vullen en
+     dus overlopen, verdubbelen we de set en start de doorlopende
+     beweging (naadloze loop via translateX(-50%), dus altijd
+     precies twee identieke helften).
+  ============================================================ */
+  const initTestimonialsMarquee = () => {
+    const viewport = document.querySelector('.testimonials-marquee__viewport');
+    const track = document.getElementById('testimonialsTrack');
+    if (!viewport || !track) return;
+
+    const originals = Array.from(track.children);
+    if (!originals.length) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const layout = () => {
+      track.innerHTML = '';
+      originals.forEach(c => track.appendChild(c.cloneNode(true)));
+
+      const fits = reducedMotion || track.scrollWidth <= viewport.clientWidth;
+      if (fits) {
+        track.classList.remove('testimonials-marquee__track--scrolling');
+        viewport.classList.add('testimonials-marquee__viewport--static');
+        return;
+      }
+
+      viewport.classList.remove('testimonials-marquee__viewport--static');
+      while (track.scrollWidth < viewport.clientWidth * 2) {
+        originals.forEach(c => track.appendChild(c.cloneNode(true)));
+      }
+      track.classList.add('testimonials-marquee__track--scrolling');
+    };
+
+    layout();
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(layout, 200);
+    });
+  };
+  initTestimonialsMarquee();
+
 });

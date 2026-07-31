@@ -177,6 +177,13 @@
     const honey = form.querySelector('[name="_gotcha"]');
     if (honey && honey.value) return;
 
+    // Verplichte velden moeten ingevuld zijn (form heeft novalidate, dus
+    // dit moeten we zelf afdwingen voor we naar Formspree versturen)
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
     const origText     = submitBtn.textContent;
     submitBtn.textContent = T.sending;
     submitBtn.disabled    = true;
