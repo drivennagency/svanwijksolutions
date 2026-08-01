@@ -314,16 +314,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ============================================================
      9b. HERO-ACHTERGRONDVIDEO
-     Laadt de (relatief zware) video alleen op tablet/desktop —
-     op mobiel blijft het bij het lichte posterframe, dat scheelt
-     flink in laadtijd en dataverbruik voor het merendeel van de
-     bezoekers.
+     Speelt overal af, ook op mobiel. Onder de 768px-breakpoint
+     laden we een apart, veel lichter geëxporteerd bestand
+     (960x540, ~1,5MB i.p.v. ~14MB) zodat het ook op mobiel data
+     vlot blijft laden.
   ============================================================ */
   const initHeroVideo = () => {
     const video = document.querySelector('.hero__bg-video');
     if (!video || !video.dataset.src) return;
-    if (!window.matchMedia('(min-width: 768px)').matches) return;
-    video.src = video.dataset.src;
+    const isMobile = !window.matchMedia('(min-width: 768px)').matches;
+    video.src = (isMobile && video.dataset.srcMobile) ? video.dataset.srcMobile : video.dataset.src;
     video.load();
     video.play().catch(() => {}); // negeer als de browser autoplay blokkeert
   };
