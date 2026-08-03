@@ -196,6 +196,12 @@
       });
 
       if (res.ok) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'generate_lead', {
+            event_category: 'contact',
+            event_label: 'contactformulier'
+          });
+        }
         closeBtn.style.display   = 'none';
         overlay.classList.add('show');
         document.body.style.overflow = 'hidden';

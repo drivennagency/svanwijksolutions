@@ -1082,6 +1082,12 @@ document.addEventListener('DOMContentLoaded', function () {
       headers: { 'Accept': 'application/json' }
     }).then(function (res) {
       if (res.ok) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'generate_lead', {
+            event_category: 'concept',
+            event_label: 'conceptaanvraag'
+          });
+        }
         form.style.display = 'none';
         var stepsBar = document.querySelector('.concept-steps');
         if (stepsBar) stepsBar.style.display = 'none';
