@@ -239,6 +239,27 @@
   </url>
 <!-- BLOG_SITEMAP:START -->
   <url>
+    <loc>https://www.svanwijksolutions.nl/blog/website-voor-horeca.html</loc><priority>0.7</priority><changefreq>monthly</changefreq>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.svanwijksolutions.nl/blog/website-voor-horeca.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.svanwijksolutions.nl/eng/blog/website-voor-horeca.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.svanwijksolutions.nl/de/blog/website-voor-horeca.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.svanwijksolutions.nl/blog/website-voor-horeca.html"/>
+  </url>
+  <url>
+    <loc>https://www.svanwijksolutions.nl/eng/blog/website-voor-horeca.html</loc><priority>0.6</priority><changefreq>monthly</changefreq>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.svanwijksolutions.nl/blog/website-voor-horeca.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.svanwijksolutions.nl/eng/blog/website-voor-horeca.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.svanwijksolutions.nl/de/blog/website-voor-horeca.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.svanwijksolutions.nl/blog/website-voor-horeca.html"/>
+  </url>
+  <url>
+    <loc>https://www.svanwijksolutions.nl/de/blog/website-voor-horeca.html</loc><priority>0.6</priority><changefreq>monthly</changefreq>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.svanwijksolutions.nl/blog/website-voor-horeca.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.svanwijksolutions.nl/eng/blog/website-voor-horeca.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.svanwijksolutions.nl/de/blog/website-voor-horeca.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.svanwijksolutions.nl/blog/website-voor-horeca.html"/>
+  </url>
+  <url>
     <loc>https://www.svanwijksolutions.nl/blog/google-analytics.html</loc><priority>0.7</priority><changefreq>monthly</changefreq>
     <xhtml:link rel="alternate" hreflang="nl" href="https://www.svanwijksolutions.nl/blog/google-analytics.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.svanwijksolutions.nl/eng/blog/google-analytics.html"/>
