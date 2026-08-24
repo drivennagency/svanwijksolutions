@@ -318,6 +318,9 @@ document.addEventListener('DOMContentLoaded', () => {
      laden we een apart, veel lichter geëxporteerd bestand
      (960x540, ~1,5MB i.p.v. ~14MB) zodat het ook op mobiel data
      vlot blijft laden.
+     Start pas na window 'load' (i.p.v. meteen bij DOMContentLoaded)
+     zodat de video niet concurreert om bandbreedte met de
+     LCP-kritieke resources (fonts, hero-poster) hierboven.
   ============================================================ */
   const initHeroVideo = () => {
     const video = document.querySelector('.hero__bg-video');
@@ -327,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
     video.load();
     video.play().catch(() => {}); // negeer als de browser autoplay blokkeert
   };
-  initHeroVideo();
+  window.addEventListener('load', initHeroVideo);
 
 
   /* ============================================================

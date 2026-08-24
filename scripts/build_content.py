@@ -88,10 +88,6 @@ LANGS = {
     },
 }
 
-FONT_LINK = ('<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:'
-             'wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" '
-             'rel="stylesheet">')
-
 ICON_CAL = ('<span class="icon-svg " aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" '
             'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
             '<rect x="3" y="4" width="18" height="18" rx="2" pathLength="1"></rect>'
@@ -158,9 +154,6 @@ def head_common(lang, title, description, canonical_path, og_type="website", og_
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content="{description}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  {FONT_LINK}
   <link rel="stylesheet" href="/style.css">
   <link rel="canonical" href="{canon_self}">
   <link rel="alternate" hreflang="nl" href="{canon_nl}">
