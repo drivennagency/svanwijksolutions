@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google Analytics: Understand What Your Website Visitors Are Really Doing | S. van Wijk Solutions</title>
-  <meta name="description" content="Discover how Google Analytics helps you understand visitor behavior on your website. Learn what data you can analyze, how to set it up, and how to use these insights to improve your online performance.">
+  <title>Setting Up Google Analytics: How We Really Do It | S. van Wijk Solutions</title>
+  <meta name="description" content="How we actually set up Google Analytics — from cookie consent to tracking real leads instead of pageviews, plus the odd thing we discovered in our own reports.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -19,8 +19,8 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
   <link rel="manifest" href="/assets/images/site.webmanifest">
-  <meta property="og:title" content="Google Analytics: Understand What Your Website Visitors Are Really Doing | S. van Wijk Solutions">
-  <meta property="og:description" content="Discover how Google Analytics helps you understand visitor behavior on your website. Learn what data you can analyze, how to set it up, and how to use these insights to improve your online performance.">
+  <meta property="og:title" content="Setting Up Google Analytics: How We Really Do It | S. van Wijk Solutions">
+  <meta property="og:description" content="How we actually set up Google Analytics — from cookie consent to tracking real leads instead of pageviews, plus the odd thing we discovered in our own reports.">
   <meta property="og:url" content="https://www.svanwijksolutions.nl/eng/blog/google-analytics.html">
   <meta property="og:type" content="article">
   <meta property="og:image" content="/assets/images/uploads/set-up-GA4-blog-titlecards.png">
@@ -29,8 +29,8 @@
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": "Google Analytics: Understand What Your Website Visitors Are Really Doing",
-    "description": "Discover how Google Analytics helps you understand visitor behavior on your website. Learn what data you can analyze, how to set it up, and how to use these insights to improve your online performance.",
+    "headline": "Setting Up Google Analytics: How We Really Do It",
+    "description": "How we actually set up Google Analytics — from cookie consent to tracking real leads instead of pageviews, plus the odd thing we discovered in our own reports.",
     "image": "/assets/images/uploads/set-up-GA4-blog-titlecards.png",
     "author": { "@type": "Person", "name": "Sem van Wijk" },
     "publisher": { "@type": "Organization", "name": "S. van Wijk Solutions" },
@@ -57,10 +57,10 @@
         <div class="container">
           <a href="/eng/blog.html" class="blog-back">Back to blog</a>
           <span class="tag">GOOGLE ANALYTICS</span>
-          <h1>Google Analytics: Understand What Your Website Visitors Are Really Doing</h1>
+          <h1>Setting Up Google Analytics: How We Really Do It</h1>
           <div class="blog-hero__meta">
             <span><span class="icon-svg " aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" pathLength="1"></rect><line x1="16" y1="2" x2="16" y2="6" pathLength="1"></line><line x1="8" y1="2" x2="8" y2="6" pathLength="1"></line><line x1="3" y1="10" x2="21" y2="10" pathLength="1"></line></svg></span> 31 July 2026</span>
-            <span><span class="icon-svg " aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8" pathLength="1"></circle><path d="M12 9v4l2 2" pathLength="1"></path><path d="M9 2h6" pathLength="1"></path></svg></span> 3 min read</span>
+            <span><span class="icon-svg " aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8" pathLength="1"></circle><path d="M12 9v4l2 2" pathLength="1"></path><path d="M9 2h6" pathLength="1"></path></svg></span> 4 min read</span>
             <span><span class="icon-svg " aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" pathLength="1"></path><circle cx="12" cy="7" r="4" pathLength="1"></circle></svg></span> Sem van Wijk</span>
           </div>
         </div>
@@ -70,42 +70,21 @@
         <div class="container" style="max-width:1040px;">
           <div class="blog-article-base">
 
-<p>A website is much more than an online business card. To get the most out of it, you need to understand how visitors interact with your pages. Which pages attract the most attention? Where do your visitors come from? Why do some people leave without contacting you? Google Analytics provides the answers.</p>
-<h3>What is Google Analytics?</h3>
-<p>Google Analytics is a free analytics platform developed by Google that helps you understand how people use your website. It collects visitor data and presents it in easy to understand reports, allowing you to make informed decisions based on real data instead of assumptions.</p>
-<p>Whether you run a business website, portfolio, blog or online store, Google Analytics helps you identify what works well and where improvements can be made.</p>
-<h3>What can you measure?</h3>
-<p>Google Analytics offers detailed insights, including:</p>
-<ul>
-<li>Total visitors over any period</li>
-<li>Traffic sources such as Google Search, social media, email campaigns and advertisements</li>
-<li>The most visited pages</li>
-<li>Average time visitors spend on each page</li>
-<li>Clicks on buttons and links</li>
-<li>Device types including desktop, tablet and mobile</li>
-<li>Visitor locations</li>
-<li>Exit pages and user journeys</li>
-</ul>
-<p>Together, these insights create a complete picture of how people interact with your website.</p>
-<h3>How does it help?</h3>
-<p>The collected data allows you to improve both your website and your marketing efforts.</p>
-<p>You can identify pages that attract many visitors but generate few enquiries, discover which campaigns deliver the best return, and understand where users leave your website before completing an action.</p>
-<p>For ecommerce websites, Google Analytics can reveal where customers abandon the checkout process. Service based businesses can measure contact form submissions, phone call clicks and quotation requests.</p>
-<p>This enables you to make smarter business decisions backed by reliable data.</p>
-<h3>Different ways to set it up</h3>
-<p>There are several ways to implement Google Analytics.</p>
-<p>The simplest approach is adding the Google Analytics tracking code directly to your website.</p>
-<p>Many businesses prefer using Google Tag Manager because it allows you to manage Analytics together with other tracking tools from one central platform.</p>
-<p>If your website runs on WordPress or another content management system, you can often install Analytics through a plugin within just a few minutes.</p>
-<p>For more advanced tracking, custom events and conversions can be configured. This makes it possible to measure actions such as downloading brochures, watching videos, submitting forms or completing purchases.</p>
-<h3>What insights can you gain?</h3>
-<p>The real value of Google Analytics comes from turning data into actionable insights.</p>
-<p>For example, you may discover that most visitors browse your website on mobile devices. This could encourage you to further optimize the mobile experience.</p>
-<p>You might also find that one particular page attracts significant traffic from search engines. Expanding that content could increase your organic visibility even further.</p>
-<p>Analytics also helps identify which marketing channels generate the highest quality leads, allowing you to invest your budget more effectively.</p>
-<h3>Why is it important?</h3>
-<p>A visually appealing website is only the first step. Without data, it is difficult to know whether your website is actually delivering results.</p>
-<p>Google Analytics helps you understand your audience, improve user experience, optimize marketing campaigns and increase conversions. By regularly reviewing your data and making informed improvements, your website becomes a stronger tool for growing your business.</p>
+<p>"Add Analytics" sounds like a five-minute checkbox: paste a code into the site, done. For us it takes a bit longer — and for good reason, because the standard approach usually hands you numbers you can't actually use. Here's how we really do it.</p>
+<h3>Step 1: we don't just paste a code</h3>
+<p>Most tutorials say: copy the gtag.js snippet, drop it in the &lt;head&gt;, done. We do it a little differently, because most of the sites we build also have a cookie banner — and the two need to talk to each other.</p>
+<p>In practice: our Analytics tag starts out with "no consent" by default. Only once a visitor genuinely clicks "Accept" do we switch it on, through Google's Consent Mode. Sounds like a minor detail, but it matters a lot: without that link, you're measuring everyone, including people who explicitly said they didn't want that — not great, and shaky ground under GDPR.</p>
+<h3>Step 2: the first check is never the daily report</h3>
+<p>Once the tag is live, we don't look at the standard report — that's often hours behind. We open Realtime, click around the site ourselves, and check whether we show up as an active user. See nothing? Nine times out of ten you just haven't accepted the cookie banner yet in that browser session, or an ad blocker is stopping the request. Neither is a bug — just something to test for calmly before panicking.</p>
+<h3>The time we accidentally discovered bots</h3>
+<p>This is the part most Analytics explainers skip. Looking at a client's first month of data, we saw a spike of dozens of new visitors, all within a few hours on the same evening. Great, right? Until we checked the locations: at the top were places that aren't really "people" at all — well-known American data-center towns.</p>
+<p>Turned out: we'd just sent pitch emails with a link to the site, and several recipients' email security (think Microsoft Defender, Proofpoint) had automatically opened that link to scan it — from a cloud server, not a laptop in someone's living room. Since then, before we trust a number like "143 visitors," we always check the hour-by-hour pattern and the locations first.</p>
+<h3>Pageviews are nice, leads are what matters</h3>
+<p>A page getting lots of views tells you nothing about whether anyone actually did something. That's why we always set up a separate "key event" for the moment someone truly submits a form — not when the page loads. That way you see, in black and white, how many visitors actually make an inquiry, instead of guessing based on a page counter that's partly made up of scanner traffic (see above).</p>
+<h3>Knowing which effort actually works</h3>
+<p>Sending a pitch email, posting on social, and running ads at the same time? Without extra effort, all of that disappears into the generic "(direct)" bucket — Analytics simply can't trace the source. So we always add a few extra characters to the link (UTM parameters) before it goes out. Takes ten seconds, and afterwards you know exactly which effort actually generated clicks — and clients.</p>
+<h3>Bottom line</h3>
+<p>Setting up Google Analytics takes five minutes. Setting it up properly — respecting cookie choices, keeping a sharp eye out for fake traffic, and focused on the numbers that actually matter — takes a bit more work, but saves you from a lot of wrong conclusions later.</p>
 
             <div class="blog-article-cta">
               <h3 style="margin-top:0;">Need help with your website?</h3>
